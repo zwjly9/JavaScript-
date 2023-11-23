@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<style>
+  .bg {
+    background-color: rgb(56, 53, 53);
+    width: 600px;
+    height: 600px;
+  }
+  .cont {
+    padding: 37px;
+    border: 3px solid white;
+    width: 520px;
+    height: 520px;
+  }
+</style>
+<script>
+  function send_name(){
+    var value = $(this).parent("div")
+    console.log(value);
+  }
+  function runAsync1() {
+    let p = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        console.log('执行完成1');
+        resolve("随便1")
+      },2000)
+    })
+    return p
+  }
+  function runAsync2() {
+    let p = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        console.log('执行完成2');
+        resolve("随便2")
+      },2000)
+    })
+    return p
+  }
+  function runAsync3() {
+    let p = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        console.log('执行完成3');
+        resolve("随便3")
+      },2000)
+    })
+    return p
+  }
+/*   runAsync1().then(function(data) {
+    console.log("打印data:" + data);
+    return runAsync2()
+  }).then(function(data) {
+    console.log("打印data：" + data);
+    console.log("直接返回2的数据");
+    // return runAsync3()
+  }).then(function(data){
+    console.log("打印data3：" + data);
+    console.log("这里应该是没有执行了");
+  }) */
+
+  function getNumber() {
+    let m = new Promise(function(resolve, reject){
+      setTimeout(function() {
+        let num = Math.ceil(Math.random()*10)
+        if(num <=5) {
+          resolve(num)
+        }else {
+          reject("too big :" + num)
+        }
+      })
+    })
+    return m
+  }
+/*   getNumber().then(
+    function(data) {
+      console.log("resolve");
+      console.log(data);
+    },
+    function(reason) {
+      console.log("reject");
+      console.log(reason);
+    }
+  ) */
+
+</script>
+<body>
+  <div>
+    <div class="bg1">
+      1111
+    </div>
+    <div class="bg">
+      <div class="cont" onclick="send_name()"></div>
+    </div>
+  </div>
+</body>
+</html>
